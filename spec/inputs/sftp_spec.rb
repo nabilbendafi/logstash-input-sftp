@@ -7,7 +7,7 @@ describe LogStash::Inputs::SFTP do
   it "should register" do
     sftp_configuration = {:host => "127.0.0.1",
                           :remote_path => "/dev/null",
-                          :local_path => "/dev/null")
+                          :local_path => "/dev/null"}
     input = LogStash::Plugin.lookup("input", "sftp").new(sftp_configuration)
 
     # register will try to load jars and raise if it cannot find jars or if org.apache.log4j.spi.LoggingEvent class is not present

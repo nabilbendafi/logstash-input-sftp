@@ -74,7 +74,7 @@ class LogStash::Inputs::SFTP < LogStash::Inputs::Base
 
   public
   def run(queue)
-    Stud.interval(@interval) |do|
+    Stud.interval(@interval) do
       @remote_path.each do |path|
         start = Time.now
         duration = Time.now - start
