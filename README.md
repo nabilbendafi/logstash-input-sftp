@@ -1,5 +1,8 @@
 # Logstash Plugin
 
+*Disclaimer: This plugin is still under developement phase*
+*Any pull request are very welcome*
+
 [![Travis Build Status](https://travis-ci.org/nabilbendafi/logstash-input-sftp.svg)](https://travis-ci.org/nabilbendafi/logstash-input-sftp)
 
 This is a plugin for [Logstash](https://github.com/elastic/logstash).
