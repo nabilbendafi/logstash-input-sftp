@@ -19,12 +19,16 @@ require "fileutils"
 # ----------------------------------
 # input {
 #   sftp {
-#     user => "me"
+#     username => "me"
 #     password => "secret"
 #     host => "localhost.localdomain"
 #     port => 2222
 #     remote_path => "/var/siem_feeder/*.log"
 #     local_path => "/var/archive/"
+#     file_input_options => {
+#      # This options override logstash-input-file ones
+#      start_position => "beginning"
+#     }
 #   }
 # }
 #
@@ -68,6 +72,9 @@ class LogStash::Inputs::SFTP < LogStash::Inputs::Base
 
     # Register LogStash::Inputs::File to follow :local_path
     file_configuration = {:path => @local_path, :type => @type}
+    if defined?(file_input_options)
+      file_configuration.merge(file_input_options)
+    end
     file_input = LogStash::Plugin.lookup("input", "file").new(file_configuration)
     file_input.register
   end # def register
